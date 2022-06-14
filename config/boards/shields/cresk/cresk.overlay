@@ -49,6 +49,7 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(3,2) RC(7,2) RC(6,3) RC(6,2) RC(6,1) RC(6,0)
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN_MATRIX";
         diode-direction = "col2row";
+        poll-period-ms = <1>;
 
         col-gpios
             = <&gpiob 4  GPIO_ACTIVE_HIGH>
@@ -71,6 +72,7 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(3,2) RC(7,2) RC(6,3) RC(6,2) RC(6,1) RC(6,0)
     kscan_direct: kscan_direct {
         compatible = "zmk,kscan-gpio-direct";
         label = "KSCAN_DIRECT";
+        poll-period-ms = <1>;
 
         input-gpios
             = <&gpioa 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
@@ -82,6 +84,7 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(3,2) RC(7,2) RC(6,3) RC(6,2) RC(6,1) RC(6,0)
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN_MATRIX_EX";
         diode-direction = "col2row";
+        poll-period-ms = <1>;
 
         col-gpios
             = <&gpioa 8  GPIO_ACTIVE_HIGH>
