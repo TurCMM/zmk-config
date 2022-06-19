@@ -65,7 +65,7 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(3,2) RC(7,2) RC(6,3) RC(6,2) RC(6,1) RC(6,0)
             , <&gpiob 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpiob 1  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpiob 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpioa 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpiob 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
 
