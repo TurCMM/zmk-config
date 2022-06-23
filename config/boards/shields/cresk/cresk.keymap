@@ -36,6 +36,8 @@
 &kp X &kp J &kp B &kp M &kp Q &kp SQT &kp G &kp COMMA &kp DOT &kp FSLH
 &none &sl 1 &sk LCTRL &kp SPACE &td0 &none
             >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         }
 ;
         lower_layer {
