@@ -15,14 +15,17 @@
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
-        columns = <7>;
+        columns = <9>;
         rows = <8>;
 
         map = <
 RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(3,0) RC(7,0) RC(4,3) RC(4,2) RC(4,1) RC(4,0)
 RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(3,1) RC(7,1) RC(5,3) RC(5,2) RC(5,1) RC(5,0)
 RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(3,2) RC(7,2) RC(6,3) RC(6,2) RC(6,1) RC(6,0)
-                RC(0,5) RC(0,4) RC(3,3) RC(7,3) RC(0,6) RC(1,6)
+                        RC(0,4) RC(3,3) RC(7,3) RC(0,5)
+RC(0,6) RC(1,6) RC(2,6) RC(3,6)
+RC(0,7) RC(1,7) RC(2,7) RC(3,7)
+RC(0,8) RC(1,8) RC(2,8) RC(3,8)
         >;
     };
 
@@ -39,9 +42,19 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(3,2) RC(7,2) RC(6,3) RC(6,2) RC(6,1) RC(6,0)
             column-offset = <4>;
         };
 
-        matrix_ex {
-            kscan = <&kscan_matrix_ex>;
+        matrix_ex_1 {
+            kscan = <&kscan_matrix_ex_1>;
             column-offset = <6>;
+        };
+
+        matrix_ex_2 {
+            kscan = <&kscan_matrix_ex_2>;
+            column-offset = <7>;
+        };
+
+        matrix_ex_3 {
+            kscan = <&kscan_matrix_ex_3>;
+            column-offset = <8>;
         };
     };
 
@@ -75,31 +88,67 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(3,2) RC(7,2) RC(6,3) RC(6,2) RC(6,1) RC(6,0)
         poll-period-ms = <1>;
 
         input-gpios
-            = <&gpioa 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&gpioa 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            = <&gpioa 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpioa 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
     };
 
-    kscan_matrix_ex: kscan_matrix_ex {
+    kscan_matrix_ex_1: kscan_matrix_ex_1 {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN_MATRIX_EX";
+        label = "KSCAN_MATRIX_EX_1";
         diode-direction = "col2row";
         poll-period-ms = <1>;
 
         col-gpios
-            = <&gpioa 8  GPIO_ACTIVE_HIGH>
+            = <&gpiob 12 GPIO_ACTIVE_HIGH>
             ;
         row-gpios
-            = <&gpioa 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpioa 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&gpiob 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpiob 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpiob 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpioa 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+
+    kscan_matrix_ex_2: kscan_matrix_ex_2 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN_MATRIX_EX_2";
+        diode-direction = "col2row";
+        poll-period-ms = <1>;
+
+        col-gpios
+            = <&gpiob 13 GPIO_ACTIVE_HIGH>
+            ;
+        row-gpios
+            = <&gpiob 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpiob 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpiob 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpioa 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+
+    kscan_matrix_ex_3: kscan_matrix_ex_3 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN_MATRIX_EX_3";
+        diode-direction = "col2row";
+        poll-period-ms = <1>;
+
+        col-gpios
+            = <&gpiob 14 GPIO_ACTIVE_HIGH>
+            ;
+        row-gpios
+            = <&gpiob 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpiob 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpiob 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpioa 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
 
     encoder: encoder {
         compatible = "alps,ec11";
         label = "ENCODER";
-        a-gpios = <&gpiob 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpiob 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        a-gpios = <&gpiob 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpioa 7  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         resolution = <2>;
         status = "okay";
     };
